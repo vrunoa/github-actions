@@ -14,3 +14,6 @@ jobs:
 
     - name: Setup runme
       uses: vrunoa/github-actions/runme@base-actions
+
+    - name: Setup node
+      uses: vrunoa/github-actions/node@base-actions
