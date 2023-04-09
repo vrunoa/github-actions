@@ -1,0 +1,19 @@
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Setup runme
+      uses: vrunoa/github-actions/runme@base-actions
+
+    - name: Setup node
+      uses: vrunoa/github-actions/node@base-actions
