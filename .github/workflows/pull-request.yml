@@ -17,3 +17,9 @@ jobs:
 
     - name: Setup node
       uses: vrunoa/github-actions/node@base-actions
+
+    - name: Setup android-sdk
+      uses: vrunoa/github-actions/android-sdk@base-actions
+      with:
+        packages:
+          -
