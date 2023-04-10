@@ -29,8 +29,3 @@ runs:
     - name: Set emulator PATH
       shell: bash
       run: echo "${ANDROID_SDK_ROOT}/emulator" >> $GITHUB_PATH
-
-    - name: Launch emulator
-      shell: bash
-      run: |
-        emulator -avd appium-avd -no-audio -no-boot-anim -no-snapshot -accel on -no-window
