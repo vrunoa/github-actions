@@ -1,0 +1,31 @@
+name: android
+inputs:
+  node-version:
+    type: string
+    default: 16.x
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
+    - name: Install system-image
+      run: |
+        sdkmanager "system-images;android-31;google_apis;x86_64"
+
+    - name: Install emulator
+      run: |
+        sdkmanager "emulator"
+
+    - name: Create emulator
+      run: |
+        avdmanager create avd --name appium-avd --package "system-images;android-31;google_apis;x86_64" --tag "google_apis" --abi "x86_64" --device "pixel_3a"
+
+    - name: Set emulator PATH
+      run: echo "${ANDROID_SDK_ROOT}/emulator" >> $GITHUB_PATH
+
+    - name: Launch emulator
+      run: |
+        emulator -avd appium-avd -no-audio -no-boot-anim -no-snapshot -accel on -no-window
