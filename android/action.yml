@@ -11,15 +11,6 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
-    - name: Setup node
-      uses: vrunoa/github-actions/node@main
-
-    - name: Install dependencies
-      shell: bash
-      run: |
-        pwd
-        npm ci
-
     - name: Install system-image
       shell: bash
       run: |
@@ -38,7 +29,3 @@ runs:
     - name: Set emulator PATH
       shell: bash
       run: echo "${ANDROID_SDK_ROOT}/emulator" >> $GITHUB_PATH
-
-    - name: Start emulator
-      shell: bash
-      run: ./src/index.js
