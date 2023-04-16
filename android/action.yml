@@ -17,6 +17,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
+        pwd
         npm ci
 
     - name: Install system-image
