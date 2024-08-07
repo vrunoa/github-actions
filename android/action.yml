@@ -14,7 +14,8 @@ runs:
     - name: Install system-image
       shell: bash
       run: |
-        sdkmanager "system-images;android-31;google_apis;x86_64"
+        #sdkmanager "system-images;android-31;google_apis;x86_64"
+        sdkmanager "system-images;android-31;google_apis;arm64-v8a"
 
     - name: Install emulator
       shell: bash
@@ -24,7 +25,8 @@ runs:
     - name: Create emulator
       shell: bash
       run: |
-        avdmanager create avd --name appium-avd --package "system-images;android-31;google_apis;x86_64" --tag "google_apis" --abi "x86_64" --device "pixel_3a"
+        #avdmanager create avd --name appium-avd --package "system-images;android-31;google_apis;x86_64" --tag "google_apis" --abi "x86_64" --device "pixel_3a"
+        avdmanager create avd --name appium-avd --package "system-images;android-31;google_apis;arm64-v8a" --tag "google_apis" --abi "arm64" --device "pixel_3a"
 
     - name: Set emulator PATH
       shell: bash
