@@ -2,16 +2,16 @@ name: dagger install
 description: Install the dagger CLI
 
 inputs:
-	version:
-		type: string
-		default: '0.15.4'
-		required: false
+  version:
+    type: string
+    default: '0.15.4'
+    required: false
 
 runs:
-	using: "composite"
-	steps:
-		- name: Install dagger
-			shell: bash
-			run: |
+  using: "composite"
+  steps:
+    - name: Install dagger
+      shell: bash
+      run: |
 				cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=${{ inputs.version }} sh; cd -; }
 				dagger version
