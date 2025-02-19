@@ -13,5 +13,5 @@ runs:
     - name: Install dagger
       shell: bash
       run: |
-				cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=${{ inputs.version }} sh; cd -; }
-				dagger version
+        cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=${{ inputs.version }} sh; cd -; }
+        dagger version
