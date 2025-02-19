@@ -15,4 +15,9 @@ A collection of GitHub actions to be shared across projects.
   uses: vrunoa/github-actions/node@main
     with:
       node-version: '16'
+
+- name: Install dagger
+  uses: vrunoa/github-actions/dagger@main
+  with:
+    dagger-version: '0.15.4'
 ```
