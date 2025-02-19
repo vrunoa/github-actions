@@ -1,4 +1,5 @@
 name: dagger install
+description: Install the dagger CLI
 
 inputs:
 	version:
