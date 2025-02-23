@@ -1,4 +1,6 @@
 name: runme install
+description: Install runme
+
 inputs:
   go-version:
     type: string
@@ -6,7 +8,7 @@ inputs:
     required: true
   version:
     type: string
-    default: v1.0.0
+    default: v3.12.2
     required: true
 
 runs:
@@ -18,4 +20,4 @@ runs:
 
     - name: Install runme
       shell: bash
-      run: go install github.com/stateful/runme@${{ inputs.version }}
+      run: go install github.com/stateful/runme/v3@${{ inputs.version }}
