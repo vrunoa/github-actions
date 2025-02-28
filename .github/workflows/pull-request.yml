@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup runme
-      uses: vrunoa/github-actions/runme@main
+      uses: vrunoa/github-actions/runme@feat/update
 
     - name: Setup node
       uses: vrunoa/github-actions/node@main
