@@ -13,6 +13,8 @@ jobs:
 
     - name: Setup runme
       uses: vrunoa/github-actions/runme@main
+      with:
+        go-version: 1.24
 
     - name: Setup node
       uses: vrunoa/github-actions/node@main

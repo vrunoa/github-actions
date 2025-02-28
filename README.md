@@ -4,7 +4,7 @@ A collection of GitHub actions to be shared across projects.
 
 # Usage
 
-```sh
+```sh {"ignore": true}
 - name: Setup runme
   uses: vrunoa/github-actions/runme@main
   with:
