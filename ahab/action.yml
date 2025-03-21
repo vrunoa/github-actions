@@ -13,6 +13,7 @@ runs:
     - name: Debug
       shell: bash
       run: |
+        ls -la $GITHUB_WORKSPACE/
         ls -la $RUNNER_WORKSPACE/github-actions/
 
     - name: Setup
