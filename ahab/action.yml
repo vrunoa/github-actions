@@ -1,0 +1,15 @@
+name: ahab launch
+description: ahab launch
+
+inputs:
+  cli-args:
+    type: string
+    default: ''
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run ahab
+      shell: bash
+      run: ./ahab {{ inputs.cli-args }} &
