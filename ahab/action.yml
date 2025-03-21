@@ -17,6 +17,7 @@ runs:
         ls -la $GITHUB_WORKSPACE/
         ls -la $RUNNER_WORKSPACE/github-actions
         ls -la $RUNNER_TEMP
+        ls -la $RUNNER_TEMP/_github_workflow
 
 
     - name: Debug
