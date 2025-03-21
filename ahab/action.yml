@@ -14,7 +14,7 @@ runs:
     - name: Setup
       shell: bash
       run: |
-        echo "$(pwd)/ahab" >> $GITHUB_PATH
+        echo "$(pwd)" >> $GITHUB_PATH
 
     - name: Debug
       shell: bash
