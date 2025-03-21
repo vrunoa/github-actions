@@ -10,6 +10,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Debug
+      shell: bash
+      run: |
+        echo $RUNNER_WORKSPACE
+        ls -la $RUNNER_WORKSPACE
 
     - name: Setup
       shell: bash
