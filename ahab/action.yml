@@ -10,6 +10,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+
+    - name: Setup
+      shell: bash
+      run: |
+        echo "$(pwd)/ahab" >> $GITHUB_PATH
+
+    - name: Debug
+      shell: bash
+      run: |
+        printenv
+
     - name: Run ahab
       shell: bash
-      run: ./ahab {{ inputs.cli-args }} &
+      run: ahab {{ inputs.cli-args }} &
