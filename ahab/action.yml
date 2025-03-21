@@ -16,17 +16,17 @@ runs:
         ls -la $GITHUB_WORKSPACE/
         ls -la $RUNNER_WORKSPACE/github-actions/
 
+    - name: Debug
+      shell: bash
+      run: |
+        printenv
+
     - name: Setup
       shell: bash
       run: |
         mkdir -p $HOME/.local/bin
         echo "$HOME/.local/bin" >> $GITHUB_PATH
         cp ahab $HOME/.local/bin/ahab
-
-    - name: Debug
-      shell: bash
-      run: |
-        printenv
 
     - name: Debug 2
       shell: bash
