@@ -21,6 +21,11 @@ runs:
       run: |
         printenv
 
+    - name: Debug 2
+      shell: bash
+      run: |
+        ls -la
+
     - name: Run ahab
       shell: bash
       run: $(pwd)/ahab {{ inputs.cli-args }} &
