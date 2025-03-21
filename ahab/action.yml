@@ -24,7 +24,7 @@ runs:
     - name: Debug 2
       shell: bash
       run: |
-        ls -la $GITHUB_PATH
+        ls -la $GITHUB_PATH/
 
     - name: Run ahab
       shell: bash
