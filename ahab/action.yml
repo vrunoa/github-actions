@@ -21,6 +21,11 @@ runs:
       run: |
         printenv
 
+    - name: Debug 1
+      shell: bash
+      run: |
+        ls -la ./
+
     - name: Debug 2
       shell: bash
       run: |
