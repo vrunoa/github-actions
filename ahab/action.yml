@@ -23,4 +23,4 @@ runs:
 
     - name: Run ahab
       shell: bash
-      run: ahab {{ inputs.cli-args }} &
+      run: $(pwd)/ahab {{ inputs.cli-args }} &
