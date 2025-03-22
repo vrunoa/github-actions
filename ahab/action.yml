@@ -1,0 +1,51 @@
+name: ahab launch
+description: ahab launch & setup, debugging container logs remotely (or locally)
+
+inputs:
+  ahab-token:
+    type: string
+    description: 'Ahab token'
+    required: true
+  cli-args:
+    type: string
+    default: ''
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Login
+      shell: bash
+      run: |
+        echo "${{ inputs.ahab-token }}" | gh auth login --with-token
+
+    - name: Download release
+      shell: bash
+      run: |
+        gh release download v0.0.4 -R vrunoa/ahab --pattern 'ahab_0.0.4_linux_386.tar.gz'
+
+    - name: Create directory
+      shell: bash
+      run: |
+        mkdir -p $HOME/.ahab/bin
+
+    - name: Untar
+      shell: bash
+      run: |
+        tar -xvf ahab_0.0.4_linux_386.tar.gz -C $HOME/.ahab/bin
+
+    - name: Set permissions
+      shell: bash
+      run: |
+        chmod +x $HOME/.ahab/bin/ahab
+
+    - name: Add to path
+      shell: bash
+      run: |
+        echo "$HOME/.ahab/bin" >> $GITHUB_PATH
+
+    - name: launch
+      shell: bash
+      run: |
+        ahab ${{ inputs.cli-args }} &
+

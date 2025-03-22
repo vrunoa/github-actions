@@ -4,7 +4,22 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
+
 jobs:
+
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: vrunoa/github-actions/ahab@feat/add-ahab
+        with:
+          ahab-token: ${{ env.AHAB_TOKEN }}
+          cli-args: --version
+
   build:
     runs-on: ubuntu-latest
 
