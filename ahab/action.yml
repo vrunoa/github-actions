@@ -16,7 +16,7 @@ runs:
     - name: Login
       shell: bash
       run: |
-        echo $AHAB_TOKEN | gh auth login --with-token
+        echo "$AHAB_TOKEN" | gh auth login --with-token
 
     - name: Download release
       shell: bash
