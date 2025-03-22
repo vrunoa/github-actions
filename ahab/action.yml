@@ -1,5 +1,5 @@
 name: ahab launch
-description: ahab launch
+description: ahab launch & setup, debugging container logs remotely (or locally)
 
 inputs:
   ahab-token:
@@ -33,11 +33,6 @@ runs:
       shell: bash
       run: |
         tar -xvf ahab_0.0.4_linux_386.tar.gz -C $HOME/.ahab/bin
-
-    - name: Lets see
-      shell: bash
-      run: |
-        ls -la $HOME/.ahab/bin
 
     - name: Set permissions
       shell: bash
