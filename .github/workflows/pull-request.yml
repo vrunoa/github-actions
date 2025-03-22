@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: vrunoa/github-actions/ahab@feat/add-ahab
+      - uses: vrunoa/github-actions/ahab@main
         with:
           ahab-token: ${{ env.AHAB_TOKEN }}
           cli-args: --version
