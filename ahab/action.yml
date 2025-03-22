@@ -24,8 +24,23 @@ runs:
       run: |
         gh release download v0.0.4 -R vrunoa/ahab --pattern 'ahab_0.0.4_linux_386.tar.gz'
 
-    - name: Debug
+    - name: Untar
       shell: bash
       run: |
-        ls -la ./
+        tar -xvf ahab_0.0.4_linux_386.tar.gz
+
+    - name: Lets see
+      shell: bash
+      run: |
+        ls -la
+
+    - name: Set permissions
+      shell: bash
+      run: |
+        chmod +x ahab
+
+    - name: launch
+      shell: bash
+      run: |
+        ./ahab ${{ inputs.cli-args }}
 
