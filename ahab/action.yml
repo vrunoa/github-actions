@@ -27,20 +27,20 @@ runs:
     - name: Untar
       shell: bash
       run: |
-        tar -xvf ahab_0.0.4_linux_386.tar.gz
+        tar -xvf ahab_0.0.4_linux_386.tar.gz -C $HOME/.local/bin
 
     - name: Lets see
       shell: bash
       run: |
-        ls -la
+        ls -la $HOME/.local/bin
 
     - name: Set permissions
       shell: bash
       run: |
-        chmod +x ahab
+        chmod +x $HOME/.local/bin/ahab
 
     - name: launch
       shell: bash
       run: |
-        ./ahab ${{ inputs.cli-args }}
+        ahab ${{ inputs.cli-args }}
 
