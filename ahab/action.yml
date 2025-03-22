@@ -42,7 +42,7 @@ runs:
     - name: Set permissions
       shell: bash
       run: |
-        chmod +x $HOME/.local/ahab/ahab
+        chmod +x $HOME/.ahab/bin/ahab
 
     - name: launch
       shell: bash
