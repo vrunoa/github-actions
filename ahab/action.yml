@@ -44,6 +44,11 @@ runs:
       run: |
         chmod +x $HOME/.ahab/bin/ahab
 
+    - name: Add to path
+      shell: bash
+      run: |
+        echo "export PATH=$HOME/.ahab/bin:$PATH" >> $GITHUB_ENV
+
     - name: launch
       shell: bash
       run: |
