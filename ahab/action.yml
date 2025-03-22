@@ -24,20 +24,25 @@ runs:
       run: |
         gh release download v0.0.4 -R vrunoa/ahab --pattern 'ahab_0.0.4_linux_386.tar.gz'
 
+    - name: Create directory
+      shell: bash
+      run: |
+        mkdir -p $HOME/.ahab/bin
+
     - name: Untar
       shell: bash
       run: |
-        tar -xvf ahab_0.0.4_linux_386.tar.gz -C $HOME/.local/bin
+        tar -xvf ahab_0.0.4_linux_386.tar.gz -C $HOME/.ahab/bin
 
     - name: Lets see
       shell: bash
       run: |
-        ls -la $HOME/.local/bin
+        ls -la $HOME/.ahab/bin
 
     - name: Set permissions
       shell: bash
       run: |
-        chmod +x $HOME/.local/bin/ahab
+        chmod +x $HOME/.local/ahab/ahab
 
     - name: launch
       shell: bash
