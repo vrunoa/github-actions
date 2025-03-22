@@ -52,5 +52,5 @@ runs:
     - name: launch
       shell: bash
       run: |
-        ahab ${{ inputs.cli-args }}
+        ahab ${{ inputs.cli-args }} &
 
