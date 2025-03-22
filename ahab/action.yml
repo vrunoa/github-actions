@@ -7,36 +7,24 @@ inputs:
     default: ''
     required: true
 
+env:
+  AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
+
 runs:
   using: "composite"
   steps:
+    - name: Login
+      shell: bash
+      run: |
+        echo $AHAB_TOKEN | gh auth login --with-token
+
+    - name: Download release
+      shell: bash
+      run: |
+        gh release download v0.0.4 -R vrunoa/ahab --pattern 'ahab_0.0.4_linux_386.tar.gz'
+
     - name: Debug
       shell: bash
       run: |
         ls -la ./
-        ls -la $GITHUB_WORKSPACE/
-        ls -la $RUNNER_WORKSPACE/github-actions
-        ls -la $RUNNER_TEMP
-        ls -la $RUNNER_TEMP/_github_workflow
 
-
-    - name: Debug
-      shell: bash
-      run: |
-        printenv
-
-    - name: Setup
-      shell: bash
-      run: |
-        mkdir -p $HOME/.local/bin
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-        cp ahab $HOME/.local/bin/ahab
-
-    - name: Debug 2
-      shell: bash
-      run: |
-        ls -la $HOME/.local/bin
-
-    - name: Run ahab
-      shell: bash
-      run: ahab --version
