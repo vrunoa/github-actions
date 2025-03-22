@@ -7,13 +7,12 @@ inputs:
     default: ''
     required: true
 
-env:
-  AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
-
 runs:
   using: "composite"
   steps:
     - name: Login
+      env:
+        AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
       shell: bash
       run: |
         echo "$AHAB_TOKEN" | gh auth login --with-token
