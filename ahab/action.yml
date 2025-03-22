@@ -2,6 +2,10 @@ name: ahab launch
 description: ahab launch
 
 inputs:
+  ahab-token:
+    type: string
+    description: 'Ahab token'
+    required: true
   cli-args:
     type: string
     default: ''
@@ -11,11 +15,9 @@ runs:
   using: "composite"
   steps:
     - name: Login
-      env:
-        AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
       shell: bash
       run: |
-        echo "$AHAB_TOKEN" | gh auth login --with-token
+        echo "${{ inputs.ahab-token }}" | gh auth login --with-token
 
     - name: Download release
       shell: bash

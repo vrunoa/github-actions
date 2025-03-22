@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  AHAB_TOKEN: ${{ secrets.AHAB_TOKEN }}
+
 jobs:
 
   debug:
@@ -14,6 +17,7 @@ jobs:
 
       - uses: vrunoa/github-actions/ahab@feat/add-ahab
         with:
+          ahab-token: ${{ env.AHAB_TOKEN }}
           cli-args: --version
 
   build:
