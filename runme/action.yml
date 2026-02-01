@@ -2,13 +2,9 @@ name: runme install
 description: Install runme
 
 inputs:
-  go-version:
-    type: string
-    default: '1.24'
-    required: true
   version:
     type: string
-    default: v3.12.4
+    default: 3.12.4
     required: true
 
 runs:
@@ -22,12 +18,12 @@ runs:
       uses: actions/cache@v4
       with:
         path: ~/.local/bin
-        key: runme-3.12.4-linux-x86_64
+        key: runme-${{ inputs.version }}-linux-x86_64
 
     - name: Setup runme
       run: |
         if [ ! -f "$HOME/.local/bin/runme" ]; then
-          curl -fsSL "https://download.stateful.com/runme/3.12.4/runme_linux_x86_64.tar.gz" | tar -xz -C "$HOME/.local/bin"
+          curl -fsSL "https://download.stateful.com/runme/${{ inputs.version }}/runme_linux_x86_64.tar.gz" | tar -xz -C "$HOME/.local/bin"
           chmod +x "$HOME/.local/bin/runme"
         fi
         echo "$HOME/.local/bin" >> $GITHUB_PATH
