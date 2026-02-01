@@ -14,10 +14,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-go@v3
-      with:
-        go-version: ${{ inputs.go-version }}
+    - name: Setup folder
+      run: |
+        mkdir -p $HOME/.local/bin
 
-    - name: Install runme
-      shell: bash
-      run: go install github.com/stateful/runme/v3@${{ inputs.version }}
+    - name: Cache runme
+      uses: actions/cache@v4
+      with:
+        path: ~/.local/bin
+        key: runme-3.12.4-linux-x86_64
+
+    - name: Setup runme
+      run: |
+        if [ ! -f "$HOME/.local/bin/runme" ]; then
+          curl -fsSL "https://download.stateful.com/runme/3.12.4/runme_linux_x86_64.tar.gz" | tar -xz -C "$HOME/.local/bin"
+          chmod +x "$HOME/.local/bin/runme"
+        fi
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
