@@ -2,22 +2,30 @@ name: runme install
 description: Install runme
 
 inputs:
-  go-version:
-    type: string
-    default: '1.24'
-    required: true
   version:
     type: string
-    default: v3.12.4
+    default: 3.12.4
     required: true
 
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-go@v3
-      with:
-        go-version: ${{ inputs.go-version }}
-
-    - name: Install runme
+    - name: Setup folder
       shell: bash
-      run: go install github.com/stateful/runme/v3@${{ inputs.version }}
+      run: |
+        mkdir -p $HOME/.local/bin
+
+    - name: Cache runme
+      uses: actions/cache@v4
+      with:
+        path: ~/.local/bin
+        key: runme-${{ inputs.version }}-linux-x86_64
+
+    - name: Setup runme
+      shell: bash
+      run: |
+        if [ ! -f "$HOME/.local/bin/runme" ]; then
+          curl -fsSL "https://download.stateful.com/runme/${{ inputs.version }}/runme_linux_x86_64.tar.gz" | tar -xz -C "$HOME/.local/bin"
+          chmod +x "$HOME/.local/bin/runme"
+        fi
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
